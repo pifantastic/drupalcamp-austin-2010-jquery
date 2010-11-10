@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Everything You Need to Know About jQuery...kinda</title>
-    <style>
+    <style type="text/css">
       body {
         padding: 0;
         margin: 0;
@@ -15,9 +15,17 @@
         color: white;
         font-size: 48px;
       }
+      div.slide {
+        overflow: hidden;
+      }
       div.innards {
         padding: 20px;
         font-size: 28px;
+      }
+      div.note {
+        font-size: 16px;
+        padding-top: 50px;
+        color: #777;
       }
       footer {
         position: fixed;
@@ -28,7 +36,12 @@
         padding: 15px;
         font-size: 22px;
       }
+      code {
+        white-space: pre;
+      }
     </style>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.js"></script>
   </head>
   <body>
 
@@ -36,14 +49,39 @@
       <h1>everything you need to know about jQuery</h1>
       <div class="innards">
         <h2>...not really but it's a start</h2>
-        <h3>I'm Aaron Forsander</h3>
-        <h3>Twitter: <a href="http://twitter.com/AaronForsander/">@AaronForsander</a></h3>
-        <h3>Blog: <a href="http://grimhappy.com/">grimhappy.com</a></h3>
+        <h3>i'm: Aaron Forsander</h3>
+        <h3>twitter: <a href="http://twitter.com/AaronForsander/">@AaronForsander</a></h3>
+        <h3>blog: <a href="http://grimhappy.com/">grimhappy.com</a></h3>
+        <h3>irc, aim: pifantastic</h3>
+      </div>
+    </div>
+
+    <div class="slide current">
+      <h1>a few things first</h1>
+      <div class="innards">
+        <ul>
+          <li>jQuery is javascript, learn javascript</li>
+          <li>the internet is full of horrible advice/examples/references 
+            <ul>
+              <li><a href="http://pietschsoft.com/post/2008/02/28/JavaScript-ForEach-Equivalent.aspx">BAD</a> vs. <a href="https://developer.mozilla.org/en/JavaScript/Reference/Statements/for...in">GOOD</a></li>
+            </ul>
+          </li>
+          <li>use good references like:
+            <ul>
+              <li>Mozilla Developer Center: <a href="https://developer.mozilla.org/en/javascript">https://developer.mozilla.org/en/javascript</a></li>
+            </ul>
+          </li>
+          <li>some good books:
+            <ul>
+              <li><a href="http://www.amazon.com/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742">Javascript: The Good Parts</a></li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </div>
   
     <div class="slide current">
-      <h1>it's a javascript library</h1>
+      <h1>jQuery is a javascript library</h1>
       <div class="innards">
         <blockquote>
           "jQuery is a fast and concise JavaScript Library that simplifies HTML document traversing, event handling, animating, and Ajax interactions for rapid web development. jQuery is designed to change the way that you write JavaScript."
@@ -52,7 +90,7 @@
           <li><h2>traversing</h2></li>
           <li><h2>event handling</h2></li>
           <li><h2>animating</h2></li>
-          <li><h2>ajax</h2></li>
+          <li><h2>ajax...ing</h2></li>
         </ul>
       </div>
     </div>
@@ -61,38 +99,67 @@
       <h1>the basics</h1>
       <div class="innards">
         <h2>$() &lt;- wtf is this?</h2>
-        <li>It's a function!</li>
-        <li>It's an alias for jQuery.  <pre>var jQuery = $;</pre></li>
+        <ul>
+          <li>It's a function!</li>
+          <li>It's an alias for jQuery</li>
+          <li>Use them interchangeably*</li>
+        </ul>
+        <code class="js">$ === jQuery; // true</code>
+        <div class="note">
+          * Be warned! Some other javascript libraries also use $ and jQuery's $ may get overwritten!
+        </div>
       </div>
     </div>
 
-    <div class="slide current">
+    <div id="austin" class="slide current">
       <h1>the basics</h1>
       <div class="innards">
         <h2>What does it do?</h2>
-        <li>$('selector') it takes a CSS3 (plus some sugar) selector</li>
-        <li>and returns an Array-like Object full of delicious DOM elements</li>
+        <ul>
+          <li>$('selector') it takes a *CSS3 selector</li>
+          <li>and returns an Array-like Object full of delicious DOM elements</li>
+        </ul>
+<code class="chili-lang-javascript">
+var list_items = $('li');
+for (var x = 0; x &lt; list_items.length; x++) {
+  alert(list_items[x]);
+}
+</code>
+<button>Run!</button>
+<script type="text/javascript">
+$('#austin button').click(function() {
+  var list_items = $('#austin li');
+  for (var x = 0; x < list_items.length; x++) {
+    alert(list_items[x]);
+  }
+});
+</script>
+        <div class="note">
+          * jQuery actually supports more than are defined in CSS 1-3 <a href="http://api.jquery.com/category/selectors/">http://api.jquery.com/category/selectors/</a>
+        </div>
       </div>
     </div>
   
     <footer>
-      Aaron Forsander | Four Kitchens
+      Aaron Forsander<br />
+      DrupalCamp Austin 2010 | November 20, 2010
     </footer>
     
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.js"></script>
+    <script src="jquery.chili.js"></script>
+    <script src="jquery.chili.recipes.js"></script>
     <script type="text/javascript">
       $(function() {
+        $("code.js").chili();
+        
         // Get window height and slide deck.
         var $window = $(window),
-            height = $window.height(),
-            $slides = $(".slide").height(height);
+            $slides = $(".slide").height($window.height());
         
         // Resize slides if window height changes.
-        var resize = function() {
-          height = $window.height();
-          $slides.height(height);
-        };
-        setInterval(resize, 200);
+        setInterval((function() {
+          $slides.height($window.height());
+          return arguments.callee;
+        })(), 200);
         
         // Listen for arrow left and right.
         $(document).keydown(function(e) {
@@ -110,10 +177,7 @@
           // Make it the current slide.
           if ($new && $new.length) {
             $current.removeClass("current");
-            $(document.body)
-              .animate({ 
-                scrollTop: $new.addClass("current").offset().top 
-              }, "fast");
+            $('body').animate({ scrollTop: $new.addClass("current").offset().top }, "fast");
           }
         });
       });
