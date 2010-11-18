@@ -3,91 +3,79 @@
   <head>
     <title>Everything You Need to Know About jQuery...kinda</title>
     <style type="text/css">
-      body {
-        padding: 0;
-        margin: 0;
-        font-family: 'Gotham Rounded', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      }
-      h1 {
-        background-color: #66B360;
-        margin: 0 0 15px 0;
-        padding: 15px;
-        color: white;
-        font-size: 48px;
-      }
-      div.slide {
-        overflow: hidden;
-      }
-      div.innards {
-        padding: 20px;
-        font-size: 28px;
-      }
-      div.note {
-        font-size: 16px;
-        padding-top: 50px;
-        color: #777;
-      }
-      footer {
-        position: fixed;
-        bottom: 0;
-        color: white;
-        background-color: #4D4D4D;
-        width: 100%;
-        padding: 15px;
-        font-size: 22px;
-      }
-      code {
-        white-space: pre;
-      }
+      body { padding: 0; margin: 0; font-family: 'Gotham Rounded', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+      h1 { background-color: #66B360; margin: 0 0 15px 0; padding: 15px; color: white; font-size: 48px; }
+      div.slide { overflow: hidden; }
+      div.innards { padding: 20px; font-size: 28px; }
+      div.note { font-size: 16px; padding-top: 50px; color: #777; }
+      footer { position: fixed; bottom: 0; color: white; background-color: #4D4D4D; width: 100%; padding: 15px; font-size: 22px; }
+      code.chili-lang-javascript, code.chili-lang-html { white-space: pre; display: block; margin-left: 25px; }
+      table { border-collapse: collapse; background-color: #EEE; }
+      td, th { border: 1px dotted #999; padding: 15px 25px; }
+      th { text-align: right; }
+      h4 { margin: 10px; }
+      .pink { color: #FF0F98; }
+      .teal { color: teal; }
+      footer, header, nav, article { display: block; }
+      button { font-size: 28px; }
+      .pretty { border: 1px solid black; width: 150px; }
+      .ugly { border: 1px solid red; color: coral; width: 400px; height: 50px; background-color: yellow }
     </style>
-    
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.js"></script>
   </head>
   <body>
 
-    <div class="slide current">
+    <a href="https://github.com/pifantastic/drupalcamp-austin-2010-jquery">
+      <img style="position: fixed; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub" />
+    </a> 
+
+    <div id="topeka" class="slide current">
       <h1>everything you need to know about jQuery</h1>
       <div class="innards">
         <h2>...not really but it's a start</h2>
-        <h3>i'm: Aaron Forsander</h3>
-        <h3>twitter: <a href="http://twitter.com/AaronForsander/">@AaronForsander</a></h3>
-        <h3>blog: <a href="http://grimhappy.com/">grimhappy.com</a></h3>
-        <h3>irc, aim: pifantastic</h3>
+        <table>
+          <tr><th>i'm</th><td>Aaron Forsander, Esq.</td></tr>
+          <tr><th>twitter</th><td><a href="http://twitter.com/AaronForsander/">@AaronForsander</a></td></tr>
+          <tr><th>blog</th><td><a href="http://grimhappy.com/">grimhappy.com</a></td></tr>
+          <tr><th>irc, aim</th><td><a href="aim:pifantastic">pifantastic</a></td></tr>
+          <tr><th>github</th><td><a href="https://github.com/pifantastic/">https://github.com/pifantastic/</a></td></tr>
+          <tr><th>d.o</th><td><a href="http://drupal.org/user/737486/">http://drupal.org/user/737486/</a></td></tr>
+        </table>
       </div>
     </div>
 
-    <div class="slide current">
+    <div id="portland" class="slide">
       <h1>a few things first</h1>
       <div class="innards">
         <ul>
-          <li>jQuery is javascript, learn javascript</li>
-          <li>the internet is full of horrible advice/examples/references 
+          <li><h4>jQuery is javascript.  Please learn javascript!</h4></li>
+          <li><h4>the internet is full of horrible advice/examples/references</h4>
             <ul>
               <li><a href="http://pietschsoft.com/post/2008/02/28/JavaScript-ForEach-Equivalent.aspx">BAD</a> vs. <a href="https://developer.mozilla.org/en/JavaScript/Reference/Statements/for...in">GOOD</a></li>
             </ul>
           </li>
-          <li>use good references like:
+          <li><h4>use good references like:</h4>
             <ul>
               <li>Mozilla Developer Center: <a href="https://developer.mozilla.org/en/javascript">https://developer.mozilla.org/en/javascript</a></li>
             </ul>
           </li>
-          <li>some good books:
+          <li><h4>read good books like:</h4>
             <ul>
-              <li><a href="http://www.amazon.com/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742">Javascript: The Good Parts</a></li>
+              <li><a href="http://www.amazon.com/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742">JavaScript: The Good Parts</a> by Douglas Crockford (<a href="http://crockfordfacts.com/">lol</a>)</li>
             </ul>
           </li>
         </ul>
       </div>
     </div>
-  
-    <div class="slide current">
+    
+    <div id="tulsa" class="slide">
       <h1>jQuery is a javascript library</h1>
       <div class="innards">
         <blockquote>
           "jQuery is a fast and concise JavaScript Library that simplifies HTML document traversing, event handling, animating, and Ajax interactions for rapid web development. jQuery is designed to change the way that you write JavaScript."
         </blockquote>
         <ul>
-          <li><h2>traversing</h2></li>
+          <li><h2>html document manipulation, traversal</h2></li>
           <li><h2>event handling</h2></li>
           <li><h2>animating</h2></li>
           <li><h2>ajax...ing</h2></li>
@@ -95,48 +83,621 @@
       </div>
     </div>
 
-    <div class="slide current">
+    <div id="seattle" class="slide">
       <h1>the basics</h1>
       <div class="innards">
-        <h2>$() &lt;- wtf is this?</h2>
+        <img src="icp.jpg" style="float: right" />
+        <h2>F'ing <span style="font-size: 60px;" class="pink">$</span>, how does it work?</h2>
         <ul>
-          <li>It's a function!</li>
-          <li>It's an alias for jQuery</li>
-          <li>Use them interchangeably*</li>
+          <li><h4>It's a function! <code>$()</code></h4></li>
+          <li><h4>It's an alias for <code>jQuery()</code></h4></li>
+          <li><h4>Use them interchangeably*</h4></li>
         </ul>
-        <code class="js">$ === jQuery; // true</code>
+        <code class="chili-lang-javascript">$ === jQuery; // true</code>
         <div class="note">
-          * Be warned! Some other javascript libraries also use $ and jQuery's $ may get overwritten!
+          * Be warned! Some other javascript libraries also use <strong>$</strong> and jQuery's 
+          <strong>$</strong> may get overwritten if those libraries are also present on the page.
         </div>
       </div>
     </div>
 
-    <div id="austin" class="slide current">
+    <div id="austin" class="slide">
       <h1>the basics</h1>
       <div class="innards">
-        <h2>What does it do?</h2>
+        <h3>What does it do?</h3>
         <ul>
-          <li>$('selector') it takes a *CSS3 selector</li>
-          <li>and returns an Array-like Object full of delicious DOM elements</li>
+          <li>takes a CSS3* selector, like 
+            <strong><code class="teal">'li'</code></strong>
+            or <strong><code class="teal">'.hello'</code></strong>
+            or <strong><code class="teal">'#thing'</code></strong>
+          </li>
+          <li>returns an Array-like Object full of delicious DOM elements</li>
+          <li>usually referred to as a <code>jQuery</code> object</li>
         </ul>
 <code class="chili-lang-javascript">
 var list_items = $('li');
+</code>
+        <div class="note">
+          * jQuery actually supports more than are defined in CSS 1-3 <a href="http://api.jquery.com/category/selectors/">http://api.jquery.com/category/selectors/</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="longview" class="slide">
+      <h1>the basics</h1>
+      <div class="innards">
+        <h3>using a jQuery object as an array</h3>
+        <ul>
+          <li>list item one</li>
+          <li>list item two</li>
+        </ul>
+<code class="chili-lang-javascript">
+var list_items = $('li');
+
+// As an array
 for (var x = 0; x &lt; list_items.length; x++) {
   alert(list_items[x]);
 }
+
 </code>
 <button>Run!</button>
 <script type="text/javascript">
-$('#austin button').click(function() {
-  var list_items = $('#austin li');
+$('#longview button').click(function() {
+  var list_items = $('#longview li');
   for (var x = 0; x < list_items.length; x++) {
     alert(list_items[x]);
   }
 });
 </script>
-        <div class="note">
-          * jQuery actually supports more than are defined in CSS 1-3 <a href="http://api.jquery.com/category/selectors/">http://api.jquery.com/category/selectors/</a>
+      </div>
+    </div>
+
+    <div id="tyler" class="slide">
+      <h1>the basics</h1>
+      <div class="innards">
+        <h3>Using a jQuery object as an object</h3>
+        <ul>
+          <li>list item one</li>
+          <li>list item two</li>
+        </ul>
+<code class="chili-lang-javascript">
+var list_items = $('li');
+
+// As an object
+list_items.each(function() {
+  alert(this);
+});
+
+</code>
+<button>Run!</button>
+<script type="text/javascript">
+$('#tyler button').click(function() {
+  $('#tyler li').each(function() {
+    alert(this);
+  });
+});
+</script>
+      </div>
+    </div>
+    
+    <div id="laredo" class="slide">
+      <h1>Chaining</h1>
+      <div class="innards">
+        <h2>jQuery lets us chain things together</h2>
+<code class="chili-lang-javascript">
+$('#foo').hide().css('color', 'yellow').show();
+</code>
+      </div>
+    </div>    
+
+    <div id="houston" class="slide">
+      <h1>Chaining</h1>
+      <div class="innards">
+        <h2>jQuery lets us chain things together</h2>
+<code class="chili-lang-javascript">
+  $('#foo') // Find the element with id=foo
+    .hide() // Hide it
+    .css('color', 'yellow') // Change its text color to yellow
+    .show() // Show it
+    .find('a') // Find all links that are children of #foo
+      .append('&lt;span&gt;hi!&lt;/span&gt;') // Append some HTML to each of those links
+      .css('background-color', 'aqua'); // Change their background color to aqua
+</code>
+      </div>
+    </div>    
+
+    <div id="london" class="slide">
+      <h1>HTML document manipulation</h1>
+      <div class="innards">
+        <h2>
+          jQuery will help you bend HTML to your will.  it's your little dollar sign shaped sword of justice. or something.
+        </h2>
+        <a href="http://api.jquery.com/category/manipulation/">http://api.jquery.com/category/manipulation/</a>
+      </div>
+    </div>
+
+    <div id="abilene" class="slide">
+      <h1>HTML document manipulation</h1>
+      <div class="innards">
+        <h2>changing the style of an element</h2>
+        <div id="changeme" style="border: 1px solid black; width: 150px;">change me</div>
+<code class="chili-lang-javascript">
+
+$('#foo').css({
+  'border': '1px solid red',
+  'color' : 'coral',
+  'width' : '400px',
+  'height': '50px',
+  'background-color': 'pink'
+});
+
+</code>
+<button>do it!</button>
+<script type="text/javascript">
+$(function() {
+  $('#abilene button').click(function() {
+    $('#changeme').css({
+      'border': '1px solid red',
+      'color' : 'coral',
+      'width' : '400px',
+      'height': '50px',
+      'background-color': 'yellow'
+    });
+  });
+});
+</script>
+      </div>
+    </div>
+
+    <div id="ugly" class="slide">
+      <h1>HTML document manipulation</h1>
+      <div class="innards">
+        <h2>event better! change the class</h2>
+        <div id="changeme2" class="pretty">change me</div>
+<code class="chili-lang-javascript">
+
+$('#foo')
+  .removeClass('pretty')
+  .addClass('ugly');
+
+</code>
+<button>do it!</button>
+<script type="text/javascript">
+$(function() {
+  $('#ugly button').click(function() {
+    $('#changeme2').removeClass('pretty').addClass('ugly');
+  });
+});
+</script>
+      </div>
+    </div>
+
+    <div id="malmo" class="slide">
+      <h1>HTML document manipulation</h1>
+      <div class="innards">
+        <h2>adding and removing HTML</h2>
+        <ul>
+          <li><a href="http://google.com" target="_blank">Google.com</a></li>
+          <li><a href="http://oprah.com" target="_blank">Oprah.com</a></li>
+        </ul>
+<code class="chili-lang-javascript">
+$('a[target=_blank]').append('&lt;em&gt;(opens in new window)&lt;/em&gt;');
+
+</code>
+<button class="one">do it!</button>
+<code class="chili-lang-javascript">
+
+$('a[target=_blank]').next().remove();
+
+</code>
+<button class="two">do it!</button>
+<script type="text/javascript">
+$(function() {
+  $('#malmo button.one').click(function() {
+    $('a[target=_blank]').after('<em> (opens in new window) </em>');
+  });
+  $('#malmo button.two').click(function() {
+    $('a[target=_blank]').next().remove();
+  });
+});
+</script>
+      </div>
+    </div>
+
+    <div id="" class="slide">
+      <h1>HTML document manipulation</h1>
+      <div class="innards">
+        <h2></h2>
+      </div>
+    </div>
+    
+    <div id="brisbane" class="slide">
+      <h1>Traversing</h1>
+      <div class="innards">
+        <h2>
+          jQuery provides several methods for moving around the DOM.  it's like your little dollar sign shaped sports car.
+        </h2>
+        <a href="http://api.jquery.com/category/traversing/">http://api.jquery.com/category/traversing/</a>
+      </div>
+    </div>
+
+    <div id="tokyo" class="slide">
+      <h1>Traversing</h1>
+      <div class="innards">
+        <h4>Let's start with some HTML</h4>
+<code class="chili-lang-html">
+&lt;div class=&quot;article&quot;&gt; 
+   &lt;h2&gt;Pterodactyls&lt;/h2&gt;
+   &lt;p&gt;Fact: Pterodactyls are the best winged creature.&lt;/p&gt;
+   &lt;p&gt;Fact: Pterodactyls are terrifying and awesome.&lt;/p&gt;
+   &lt;p&gt;Fact: I saw a pterodactyl eat an entire city for pleasure.&lt;/p&gt;
+&lt;/div&gt;
+</code>
+<div style="display: none" class="article">
+   <h2>Pterodactyls</h2>
+   <p>Fact: Pterodactyls are the best winged creature.</p>
+   <p>Fact: Pterodactyls are terrifying and awesome.</p>
+   <p>Fact: I saw a pterodactyl eat an entire city for pleasure.</p>
+</div>
+<h4>let's get all the child elements of the article!</h4>
+<code class="chili-lang-javascript">
+var children = $('.article').children();
+
+children.each(function() {
+  alert(this.tagName + ': ' + this.innerHTML);
+});
+</code>
+<button class="one">Run!</button>
+<script type="text/javascript">
+$(function() {
+  $('#tokyo button.one').click(function() {
+    $('#tokyo .article').children().each(function() {
+      alert(this.tagName + ': ' + this.innerHTML);
+    });
+  });
+});
+</script>
+      </div>
+    </div>
+    
+    <div id="miami" class="slide">
+      <h1>Traversing</h1>
+      <div class="innards">
+<code class="chili-lang-html">
+&lt;div class=&quot;article&quot;&gt; 
+   &lt;h2&gt;Pterodactyls&lt;/h2&gt;
+   &lt;p&gt;Fact: Pterodactyls are the best winged creature.&lt;/p&gt;
+   &lt;p&gt;Fact: Pterodactyls are terrifying and awesome.&lt;/p&gt;
+   &lt;p&gt;Fact: I saw a pterodactyl eat an entire city for pleasure.&lt;/p&gt;
+&lt;/div&gt;
+</code>
+<div style="display: none" class="article">
+   <h2>Pterodactyls</h2>
+   <p>Fact: Pterodactyls are the best winged creature.</p>
+   <p>Fact: Pterodactyls are terrifying and awesome.</p>
+   <p>Fact: I saw a pterodactyl eat an entire city for pleasure.</p>
+</div>
+<h4>A contrived example! (dont actually write code like this)</h4>
+<code class="chili-lang-javascript">
+var h2 = $('.article h2');
+alert(h2.text());
+alert(h2.next().text());
+alert(h2.next().prev().text());
+alert(h2.next().next().text());
+alert(h2.next().next().next().text());
+</code>
+<button>Run!</button>
+<script type="text/javascript">
+$(function() {
+  $('#miami button').click(function() {
+    var current = $('#miami .article h2');
+    alert(current.text());
+    alert(current.next().text());
+    alert(current.next().prev().text());
+    alert(current.next().next().text());
+    alert(current.next().next().next().text());
+  });
+});
+</script>
+      </div>
+    </div>
+  
+    <div id="denver" class="slide">
+      <h1>Traversing</h1>
+      <div class="innards">
+        <ul>
+          <li class="jelly">foo</li>
+          <li class="jelly">bar
+            <ul>
+              <li id="baz" class="jelly">baz
+                <ul><li class="jelly">boom</li></ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+<code class="chili-lang-javascript">
+$('#baz').parents('li').css('background-color', 'yellow');
+$('#baz').find('li').css('background-color', 'red');
+
+</code>
+<button>Run!</button>
+<script type="text/javascript">
+$(function() {
+  $('#denver button').click(function() {
+    $('#baz').parents('.jelly').css('background-color', 'yellow');
+    $('#baz').find('.jelly').css('background-color', 'red');
+  });
+});
+</script>
+      </div>
+    </div>
+  
+    <div id="chicago" class="slide">
+      <h1>Event binding</h1>
+      <div class="innards">
+        <h2>jQuery makes it dead simple to bind events to elements</h2>
+      </div>
+    </div>
+
+    <div id="oslo" class="slide">
+      <h1>Event binding</h1>
+      <div class="innards">
+      <h2>binding to a link's click event</h2>
+      <h4>clicky -&gt; <a href="http://google.com">Google.com</a></h4>
+      
+<code class="chili-lang-javascript" style="">
+$('a').click(function() {
+  alert('You are about to go to ' + $(this).attr("href"));
+});
+</code>
+<script type="text/javascript">
+$(function() {
+  $('#oslo a').click(function(e) {
+    alert('You are about to go to ' + $(this).attr("href"));
+  });
+});
+</script>
+      </div>
+    </div>
+
+    <div id="la" class="slide">
+      <h1>Event binding</h1>
+      <div class="innards">
+        <h4>disabling the browser's default behavior</h4>
+        <h4>clicky -&gt; <a href="http://google.com">Google.com</a></h4>
+<code class="chili-lang-javascript" style="">
+$('a').click(function(e) {
+  alert("Don't even think about going to " + $(this).attr("href"));
+  e.preventDefault();
+});
+</code>
+<script type="text/javascript">
+$(function() {
+  $('#la a').click(function(e) {
+    alert("Don't even think about going to " + $(this).attr("href"));
+    e.preventDefault();
+  });
+});
+</script>
+      </div>
+    </div>
+
+    <div id="moscow" class="slide">
+      <h1>Event binding</h1>
+      <div class="innards">
+        <h4>stopping an event</h4>
+        <p><a href="http://google.com">Google.com</a></p>
+<code class="chili-lang-html" style="">
+&lt;p&gt;&lt;a href="http://google.com"&gt;Google.com&lt;/a&gt;&lt;/p&gt;
+
+</code>
+<code class="chili-lang-javascript" style="">
+$('a').click(function(e) {
+  if (confirm('Stop propagation?')) {
+    e.stopPropagation();
+  }
+});
+
+$('p').click(function(e) {
+  alert("Thanks for bubbling to me!");
+});
+</code>
+<script type="text/javascript">
+$(function() {
+  $('#moscow a').click(function(e) {
+    if (confirm('Stop propagation?')) {
+      e.stopPropagation();
+    }
+  });
+  $('#moscow p').click(function(e) {
+    alert("Thanks for bubbling to me!");
+  });
+});
+</script>
+      </div>
+    </div>
+
+    <div id="berlin" class="slide">
+      <h1>Event binding</h1>
+      <div class="innards">
+        <h2>stopping an event and preventing the default behavior</h2>
+        <p><a href="http://google.com">Google.com</a></p>
+<code class="chili-lang-html" style="">
+&lt;p&gt;&lt;a href="http://google.com"&gt;Google.com&lt;/a&gt;&lt;/p&gt;
+
+</code>
+<code class="chili-lang-javascript" style="">
+$('a').click(function(e) {
+  return false;
+});
+</code>
+<script type="text/javascript">
+$(function() {
+  $('#berlin a').click(function(e) {
+    return false;
+  });
+});
+</script>
+      </div>
+    </div>
+
+    <div id="atlanta" class="slide">
+      <h1>Event binding</h1>
+      <div class="innards">
+        <h2>There are so many events!</h2>
+        <p>blur(), change(), click(), dblclick(), error(), focus(), focusin(), focusout(), hover(), keydown(), keypress(), keyup(), mousedown(), mouseenter(), mouseleave(), mousemove(), mouseout(), mouseover(), mouseup(), ready(), resize(), scroll(), select(), submit(), toggle()</p>
+      </div>
+    </div>
+
+    <div id="tucson" class="slide">
+      <h1>Event binding</h1>
+      <div class="innards">
+        <h2>But perhaps the most important event:</h2>
+<code class="chili-lang-javascript" style="">
+$(document).ready(function(e) {
+  // Think of it as "int main() {}"
+});
+</code>
+        <ul>
+          <li><h4>It means the DOM is ready for action</h4></li>
+          <li><h4>Put your jQuery code inside it</h4></li>
+        </ul>
+<code class="chili-lang-javascript" style="">
+$(function(e) {
+  // This is the shorthand way to do the same thing
+});
+</code>
+      </div>
+    </div>
+
+    <div id="philly" class="slide">
+      <h1>Animation</h1>
+      <div class="innards">
+        <h2>jQuery makes it easy to do simple animations:</h2>
+        <ul>
+          <li><h3>show/hide elements</h3></li>
+          <li><h3>slide up/down elements</h3></li>
+          <li><h3>fade in/out elements</h3></li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="new-orleans" class="slide">
+      <h1>Animation</h1>
+      <div class="innards">
+        <h4>show/hide an element</h4>
+        <button id="show">show</button> / <button id="hide">hide</button>
+        <div style="padding-top: 10px; width: 120px; height: 120px;">
+          <div class="red-box" style="background-color: red; width: 100px; height: 100px"></div>
         </div>
+<code class="chili-lang-javascript" style="">
+$('#show').click(function() {
+  $('.red-box').show();
+});
+
+$('#hide').click(function() {
+  $('.red-box').hide();
+});
+</code>
+<script type="text/javascript">
+$(function() {
+  $('#show').click(function() {
+    $('#new-orleans .red-box').show();
+  });
+  $('#hide').click(function() {
+    $('#new-orleans .red-box').hide();
+  });
+});
+</script>
+      </div>
+    </div>
+
+    <div id="jackson" class="slide">
+      <h1>Animation</h1>
+      <div class="innards">
+        <h4>slide up/down an element</h4>
+        <button id="slideup">up</button> / <button id="slidedown">down</button>
+        <div style="padding-top: 10px; width: 120px; height: 120px;">
+          <div class="red-box" style="background-color: red; width: 100px; height: 100px"></div>
+        </div>
+<code class="chili-lang-javascript" style="">
+$('#slideup').click(function() {
+  $('.red-box').slideUp();
+});
+
+$('#slidedown').click(function() {
+  $('.red-box').slideDown();
+});
+</code>
+<script type="text/javascript">
+$(function() {
+  $('#slideup').click(function() {
+    $('#jackson .red-box').slideUp();
+  });
+  $('#slidedown').click(function() {
+    $('#jackson .red-box').slideDown();
+  });
+});
+</script>
+      </div>
+    </div>
+
+    <div id="el-paso" class="slide">
+      <h1>Animation</h1>
+      <div class="innards">
+        <h4>fade in/out an element</h4>
+        <button id="fadein">in</button> / <button id="fadeout">out</button>
+        <div style="padding-top: 10px; width: 120px; height: 120px;">
+          <div class="red-box" style="background-color: red; width: 100px; height: 100px"></div>
+        </div>
+<code class="chili-lang-javascript" style="">
+$('#fadein').click(function() {
+  $('.red-box').fadeIn("fast", function() {
+    alert('Nice fadein bro.');
+  });
+});
+
+$('#fadeout').click(function() {
+  $('.red-box').fadeOut("slow");
+});
+</code>
+<script type="text/javascript">
+$(function() {
+  $('#fadein').click(function() {
+    $('#el-paso .red-box').fadeIn("fast", function() {
+      alert('Nice fadein bro.');
+    });
+  });
+  $('#fadeout').click(function() {
+    $('#el-paso .red-box').fadeOut("slow");
+  });
+});
+</script>
+      </div>
+    </div>
+
+    <div id="sidney" class="slide">
+      <h1>the code for this presentation</h1>
+      <div class="innards">
+<code class="chili-lang-javascript" style="">
+$(function() {
+  var $window = $(window), $slides = $(".slide").height($window.height());
+  setInterval(function() { $slides.height($window.height()); }, 200);
+  $(document).keydown(function(e) {
+    var $new, $current = $(".slide.current");
+    switch (e.which) {
+      case 40: case 39: $new = $current.next(".slide"); break;
+      case 38: case 37: $new = $current.prev(".slide"); break;
+    }
+    if ($new && $new.length) {
+      $current.removeClass("current");
+      $('body').animate({ scrollTop: $new.addClass("current").offset().top }, "fast");
+    }
+  });
+});
+
+</code>
+        <a style="font-weight: bold" href="https://github.com/pifantastic/drupalcamp-austin-2010-jquery">https://github.com/pifantastic/drupalcamp-austin-2010-jquery</a>
       </div>
     </div>
   
@@ -149,35 +710,53 @@ $('#austin button').click(function() {
     <script src="jquery.chili.recipes.js"></script>
     <script type="text/javascript">
       $(function() {
-        $("code.js").chili();
-        
-        // Get window height and slide deck.
+        // Get window height and set the slide height.
         var $window = $(window),
-            $slides = $(".slide").height($window.height());
+            $slides = $(".slide").height($window.height()),
+            hash = location.hash,
+            $active = $(hash);
+        
+        // Go to the correct slide if there is a hash.
+        if ($active.length) {
+          $slides.removeClass('current');
+          $active.addClass('current');
+          $(document.body).scrollTop($active.offset().top);
+        }
         
         // Resize slides if window height changes.
-        setInterval((function() {
+        setInterval(function() { 
           $slides.height($window.height());
-          return arguments.callee;
-        })(), 200);
+          // $(document.body).scrollTop($(".slide.current").offset().top);
+        }, 200);
         
         // Listen for arrow left and right.
         $(document).keydown(function(e) {
-          var $new,
-              $current = $(".slide.current");
+          var $new, $current = $(".slide.current");
           
           // Get the next or previous slide.
           switch (e.which) {
-            case 39:
-              $new = $(".slide.current").next(".slide"); break;
-            case 37:
-              $new = $(".slide.current").prev(".slide"); break;
+            case 40: // down
+            case 39: // right
+              $new = $current.next(".slide"); 
+              if (!$new.length) { $new = $slides.first(); }
+              break;
+            case 38: // up
+            case 37: // left
+              $new = $current.prev(".slide");
+              if (!$new.length) { $new = $slides.last(); }
+              break;
+            default:
+              return;
           }
           
           // Make it the current slide.
           if ($new && $new.length) {
             $current.removeClass("current");
-            $('body').animate({ scrollTop: $new.addClass("current").offset().top }, "fast");
+            $(document.body).animate({ scrollTop: $new.addClass("current").offset().top }, "fast");
+            
+            // Set the new hash.
+            var id = $new.attr('id');
+            location.hash = id ? '#' + id : '';
           }
         });
       });
