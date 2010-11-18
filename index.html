@@ -17,7 +17,7 @@
       .pink { color: #FF0F98; }
       .teal { color: teal; }
       footer, header, nav, article { display: block; }
-      button { font-size: 28px; }
+      input, button, option { font-size: 28px; }
       .pretty { border: 1px solid black; width: 150px; }
       .ugly { border: 1px solid red; color: coral; width: 400px; height: 50px; background-color: yellow }
     </style>
@@ -298,6 +298,122 @@ $(function() {
   });
   $('#malmo button.two').click(function() {
     $('a[target=_blank]').next().remove();
+  });
+});
+</script>
+      </div>
+    </div>
+    
+    <div id="antwerp" class="slide">
+      <h1>HTML document manipulation</h1>
+      <div class="innards">
+        <h4>working with form elements</h4>
+        <label>Text:<input type="text" id="name" /></label>
+        <label>Select:
+          <select>
+            <option value="foo">foo</option>
+            <option value="bar">bar</option>
+          </select>
+        </label>
+        <label>Checkbox: <input type="checkbox" /></label>
+<code class="chili-lang-javascript">
+
+$('input').blur(function() {
+  alert($(this).val());
+});
+
+$('select, input[type=checkbox]').change(function() {
+  alert($(this).val());
+});
+
+$('input[type=checkbox]').change(function() {
+  if ($(this).is(":checked")) {
+    alert('checked!');
+  }
+});
+
+</code>
+<button class="two">do it!</button>
+<script type="text/javascript">
+$(function() {
+  $('#antwerp input').blur(function() {
+    alert($(this).val());
+  });
+  $('#antwerp select').change(function() {
+    alert($(this).val());
+  });
+  $('#antwerp input[type=checkbox]').change(function() {
+    if ($(this).is(":checked")) {
+      alert('checked!');
+    }
+  });
+});
+</script>
+      </div>
+    </div>
+    
+    <div id="rome" class="slide">
+      <h1>HTML document manipulation</h1>
+      <div class="innards">
+        <h2>accessing an element's attributes</h2>
+        <a href="http://fourkitchens.com" target="_blank" class="external">Four Kitchens</a>
+<code class="chili-lang-html">
+
+&lt;a href="http://fourkitchens.com" target="_blank" class="external"&gt;
+  Four Kitchens
+&lt;/a&gt;
+</code>
+<code class="chili-lang-javascript">
+
+alert($('a').attr('href'));
+alert($('a').attr('target'));
+alert($('a').attr('class'));
+
+</code>
+<button class="one">do it!</button>
+<script type="text/javascript">
+$(function() {
+  $('#rome button.one').click(function() {
+    alert($('#rome a').attr('href'));
+    alert($('#rome a').attr('target'));
+    alert($('#rome a').attr('class'));
+  });
+});
+</script>
+      </div>
+    </div>
+
+    <div id="cairo" class="slide">
+      <h1>HTML document manipulation</h1>
+      <div class="innards">
+        <h2>storing data in an element</h2>
+        <div id="counter">You've clicked me <span>0</span> time(s)!</div>
+<code class="chili-lang-html">
+
+&lt;div id="counter"&gt;You've clicked me &lt;span&gt;0&lt;/span&gt; time(s)!&lt;/div&gt;
+</code>
+<code class="chili-lang-javascript">
+
+$('#counter').click(function() {
+  var $counter = $(this);
+  var count = $counter.data('count') || 0;
+  
+  $counter
+    .data('count', ++count)
+    .find('span')
+      .text(count);
+});
+</code>
+<script type="text/javascript">
+$(function() {
+  $('#counter').click(function() {
+    var $counter = $(this);
+    var count = $counter.data('count') || 0;
+    
+    $counter
+      .data('count', ++count)
+      .find('span')
+        .text(count);
   });
 });
 </script>
