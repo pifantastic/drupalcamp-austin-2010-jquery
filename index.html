@@ -8,7 +8,7 @@
       div.slide { overflow: hidden; }
       div.innards { padding: 20px; font-size: 28px; }
       div.note { font-size: 16px; padding-top: 50px; color: #777; }
-      footer { position: fixed; bottom: 0; color: white; background-color: #4D4D4D; width: 100%; padding: 15px; font-size: 22px; background-image: url(fk-footer.png); background-position: left center; padding-left: 90px;  background-repeat: no-repeat}
+      footer { position: fixed; bottom: 0; color: white; background-color: #4D4D4D; width: 100%; padding: 15px; font-size: 22px; background-image: url(fk-footer.png); background-position: 10px center; padding: 20px 100px;  background-repeat: no-repeat}
       code.chili-lang-javascript, code.chili-lang-html { white-space: pre; display: block; margin-left: 25px; }
       table { border-collapse: collapse; background-color: #EEE; }
       td, th { border: 1px dotted #999; padding: 15px 25px; }
@@ -163,35 +163,7 @@ $('#longview button').click(function() {
 <code class="chili-lang-javascript">
 var list_items = $('li');
 
-// As an object
-list_items.each(function() {
-  alert(this);
-});
-
-</code>
-<button>Run!</button>
-<script type="text/javascript">
-$('#tyler button').click(function() {
-  $('#tyler li').each(function() {
-    alert(this);
-  });
-});
-</script>
-      </div>
-    </div>
-
-    <div id="tyler" class="slide">
-      <h1>The Basics</h1>
-      <div class="innards">
-        <h3>Using a jQuery object as an object</h3>
-        <ul>
-          <li>list item one</li>
-          <li>list item two</li>
-        </ul>
-<code class="chili-lang-javascript">
-var list_items = $('li');
-
-// As an object
+// Execute a callback for each element in the jQuery object
 list_items.each(function() {
   alert(this);
 });
@@ -233,7 +205,7 @@ $(function() {
       </div>
     </div>
 
-    <div id="whoa" class="slide">
+    <div id="clever" class="slide">
       <h1>The Basics</h1>
       <div class="innards">
         <h3>Get used to this paradigm</h3>
@@ -241,8 +213,6 @@ $(function() {
 $('GET_SOMETHING').DO_SOMETHING();
 
 </code>
-<button>Go!</button>
-
       </div>
     </div>
 
@@ -381,7 +351,7 @@ $(function() {
             <option value="bar">bar</option>
           </select>
         </label>
-        <label><input type="checkbox" value="Yes" />Am I checked?</label>
+        <label><input type="checkbox" name="happy" value="Yes" />Am I checked?</label>
         <label>
           <input type="radio" name="color" value="red" /> red 
           <input type="radio" name="color" value="yellow" /> yellow
@@ -391,7 +361,7 @@ $(function() {
 
 alert($('input').val());
 alert($('select').val());
-alert($('input:checkbox:checked').val());
+alert($('input:checkbox[name=happy]:checked').val());
 alert($('input:radio[name=color]:checked').val());
 
 </code>
@@ -401,7 +371,7 @@ $(function() {
   $('#antwerp button').click(function() {
     alert($('#antwerp input').val());
     alert($('#antwerp select').val());
-    alert($('#antwerp input:checkbox:checked').val());
+    alert($('#antwerp input:checkbox[name=happy]:checked').val());
     alert($('#antwerp input:radio[name=color]:checked').val());  
   });
 });
@@ -440,10 +410,33 @@ $(function() {
       </div>
     </div>
 
-    <div id="cairo" class="slide">
+    <div id="sauce" class="slide">
       <h1>HTML document manipulation</h1>
       <div class="innards">
         <h2>Storing data in an element</h2>
+<code class="chili-lang-javascript">
+// Store the key 'bar' with value 42 in the #foo element
+$('#foo').data('bar', 42);
+
+// Retrieve the data for the key 'bar' from the #foo element
+alert($('#foo').data('bar'));
+
+</code>
+<button>Go!</button>
+<script type="text/javascript">
+$(function() {
+  $('#sauce button').click(function() {
+    $('#sauce').data('bar', 42);
+    alert($('#sauce').data('bar'));
+  });
+});
+</script>
+      </div>
+    </div>
+
+    <div id="cairo" class="slide">
+      <h1>HTML document manipulation</h1>
+      <div class="innards">
         <div id="counter">You've clicked me <span>0</span> time(s)!</div>
 <code class="chili-lang-html">
 
@@ -452,20 +445,18 @@ $(function() {
 <code class="chili-lang-javascript">
 
 $('#counter').click(function() {
-  // Cache our jQuery object
-  var $counter = $(this);
   // Get the current count, default to 0
-  var count = $counter.data('count') || 0;
+  var count = $(this).data('count') || 0;
+  
   // Update the count and the text
-  $counter.data('count', ++count).find('span').text(count);
+  $(this).data('count', ++count).find('span').text(count);
 });
 </code>
 <script type="text/javascript">
 $(function() {
   $('#counter').click(function() {
-    var $counter = $(this);
-    var count = $counter.data('count') || 0;
-    $counter.data('count', ++count).find('span').text(count);
+    var count = $(this).data('count') || 0;
+    $(this).data('count', ++count).find('span').text(count);
   });
 });
 </script>
@@ -736,37 +727,34 @@ $(function(e) {
     <div id="little-rock" class="slide">
       <h1>Event Binding</h1>
       <div class="innards">
+        <select id="food-types">
+          <option value="fruits">fruits</option>
+          <option value="veggies">veggies</option>
+        </select>
+        <select id="list"></select>
 <code class="chili-lang-javascript" style="">
+
 $(document).ready(function(e) {
   var food_types = {
-    'fruits' => ['apple', 'banana', 'orange'],
-    'veggies' => ['squash', 'carrot', 'cucumber']
+    fruits: ['apple', 'banana', 'orange'],
+    veggies: ['squash', 'carrot', 'cucumber']
   };
   
   $('#food-types').change(function() {
     $('#list').html('');
     var foods = food_types[$(this).val()];
+    
     for (var x = 0; x &lt; foods.length; x++) {
       $('#list').append($('&lt;option /&gt;').val(foods[x]).text(foods[x]));
     }
   });
 });
 </code>
-      </div>
-    </div>
-
-    <div id="texarkana" class="slide">
-      <h1>Event Binding</h1>
-      <div class="innards">
-        <select id="food-types">
-          <option>fruits</option>
-          <option>veggies</option>
-        </select>
 <script type="text/javascript">
 $(document).ready(function(e) {
   var food_types = {
-    'fruits' => ['apple', 'banana', 'orange'],
-    'veggies' => ['squash', 'carrot', 'cucumber']
+    fruits: ['apple', 'banana', 'orange'],
+    veggies: ['squash', 'carrot', 'cucumber']
   };
   
   $('#food-types').change(function() {
@@ -776,6 +764,8 @@ $(document).ready(function(e) {
       $('#list').append($('<option />').val(foods[x]).text(foods[x]));
     }
   });
+
+  $('#food-types').change();
 });
 </script>
       </div>
@@ -921,6 +911,109 @@ $(function() {
       </div>
     </div>
     
+    <div id="ajax" class="slide">
+      <h1>Ajax</h1>
+      <div class="innards">
+        <blockquote>
+          "The jQuery library has a full suite of AJAX capabilities. The functions and methods therein allow us to load data from the server without a browser page refresh."
+        </blockquote>
+        <h4>jQuery is like your little dollar sign shaped portal to your server.  Think $targate.</h4>
+      </div>
+    </div>
+    
+    <div id="comet" class="slide">
+      <h1>Ajax</h1>
+      <div class="innards">
+        <h3>jQuery has one mega-method for making ajax requests:</h3>
+<code class="chili-lang-javascript" style="">
+$.ajax({
+  type: "POST",
+  url: "some.php",
+  data: "name=John&location=Boston",
+  dataType: "json",
+  success: function(msg) { alert("Data Saved: " + msg); },
+  complete: function(msg) { alert("Finished!"); },
+  error: function(msg) { alert("Oh gawd, massive failure."); }
+});
+</code>
+      </div>
+    </div>
+    
+    <div id="ice" class="slide">
+      <h1>Ajax</h1>
+      <div class="innards">
+        <h3>But thankfully there are helper methods that make it easier:</h3>
+<code class="chili-lang-javascript" style="">
+// Make a POST request
+$.post('/some/url/', { foo: "bar" }, function(data) {
+  alert(data);
+});
+
+// Make a GET request
+$.get('/some/url/', function(data) {
+  alert(data);
+});
+</code>
+      </div>
+    </div>
+
+    <div id="four-loko" class="slide">
+      <h1>Ajax</h1>
+      <div class="innards">
+        <h3>More examples:</h3>
+<code class="chili-lang-javascript" style="">
+// Load contents of about.html into element #foo
+$('#foo').load('about.html');
+
+// Load some JSON
+$.getJSON('/data/stuff.json', function(data) {
+  alert(data);
+});
+</code>
+      </div>
+    </div>
+
+    <div id="five-loko" class="slide">
+      <h1>Ajax</h1>
+      <div class="innards">
+        <h3>At some point you will be tempted to do this:</h3>
+<code class="chili-lang-javascript" style="">
+function loadContacts() {
+  var contacts = [];
+  
+  $.get('/contacts/', function(data) {
+    contacts = data;
+  });
+  
+  return contacts;
+}
+</code>
+      </div>
+    </div>
+
+    <div id="six-loko" class="slide">
+      <h1>Ajax</h1>
+      <div class="innards">
+        <h3>But Ajax is, you know, asynchronous</h3>
+        <h4>You have to tell jQuery to be synchronous</h4>
+<code class="chili-lang-javascript" style="">
+
+function loadContacts() {
+  var contacts = [];
+  $.ajaxSetup({ async: false });
+  
+  $.get('/contacts/', function(data) {
+    contacts = data.contacts;
+  });
+  
+  $.ajaxSetup({ async: false });
+  
+  return contacts;
+}
+</code>
+      </div>
+    </div>
+
     <div id="hogwarts" class="slide">
       <h1>Getting Help</h1>
       <div class="innards">
