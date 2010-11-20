@@ -723,7 +723,42 @@ $(function(e) {
 </code>
       </div>
     </div>
-    
+ 
+    <div id="behave" class="slide">
+      <h1>Event Binding</h1>
+      <div class="innards">
+        <h2>Drupal Behaviors</h2>
+        <p></p>
+<code class="chili-lang-javascript" style="">
+Drupal.behaviors.my_awesome_thing = function(context) {
+  var $context = $(context);
+  
+  if (!$context.is('.my-awesome-thing-processed')) {
+    // Do stuff here!
+  }
+  
+  $context.addClass('my-awesome-thing-processed');
+};
+</code>
+      </div>
+    </div>
+
+    <div id="behave2" class="slide">
+      <h1>Event Binding</h1>
+      <div class="innards">
+        <h2>Drupal Behaviors</h2>
+<code class="chili-lang-javascript" style="">
+Drupal.attachBehaviors = function(context) {
+  context = context || document;
+  // Execute all of them.
+  jQuery.each(Drupal.behaviors, function() {
+    this(context);
+  });
+};
+</code>
+      </div>
+    </div>
+
     <div id="little-rock" class="slide">
       <h1>Event Binding</h1>
       <div class="innards">
